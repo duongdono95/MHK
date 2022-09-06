@@ -27,6 +27,14 @@ app.use(express.json());
 
 
 
+// mongoose
+mongoose.connect(
+    mongoDB, 
+    {useNewUrlParser: true, useUnifiedTopology: true},
+    () => {console.log("connection attempted")}
+);
+
+const db = mongoose.connection;
 
 
 

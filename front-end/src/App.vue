@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+    <header class="header">
     <div class="heading">
       <div class="icons">
         <img src="./assets/nav-icons.svg" alt="icons">
@@ -23,66 +23,22 @@
       </div>
     </nav>
   </header>
-  <body>
-    
-  </body>
-  <footer>
-    <div class="footer">
-      <div class="brand__container">
-      <p class="footer__title">Brand</p>
-      <div class="brands">
-        <div class="brand__list">
-        <p class="brand__item">B-TECH</p>
-        <p class="brand__item">BC TECH</p>
-      </div>
-      <div class="brand__list">
-        <p class="brand__item">ALIEN</p>
-        <p class="brand__item">TECHNOLOGY</p>
-      </div>
-      <div class="brand__list">
-        <p class="brand__item">Apple</p>
-        <p class="brand__item">Samsung</p>
-      </div>
-      </div>
-    </div>
-    <div class="contactUs__container">
-      <p class="footer__title">Contact Us</p>
-      <div class="contactUs__list">
-        <div class="contactUs__item">
-        <p class="title">Address</p>
-        <p class="info">7107 Juniper Road Fairview, TN 37062</p>
-      </div>
-      <div class="contactUs__item">
-        <p class="title">Phone</p>
-        <p class="info">022 507 584xx</p>
-      </div>
-      <div class="contactUs__item">
-        <p class="title">Email</p>
-        <p class="info">mhk@gmail.com</p>
-      </div>
-      </div>
-    </div>
-    <div class="socialMedia__container">
-      <p class="footer__title">Social Media</p>
-      <ul>
-        <li class="socialMedia__item"><i class="fa-brands fa-facebook"></i></li>
-        <li class="socialMedia__item"><i class="fa-brands fa-square-instagram"></i></li>
-        <li class="socialMedia__item"><i class="fa-brands fa-square-twitter"></i></li>
-        <li class="socialMedia__item"><i class="fa-brands fa-square-youtube"></i></li>
-      </ul>
-    </div>
-    </div>
-  </footer>
+  <div class="body">
+
+  </div>
+
+
   <RouterView />
 </template>
 
 <script>
   export default {
-    
+   
   }
 </script>
 
 <style scoped>
+
 .header {
   max-width :1400px;
   margin: 0 auto;
@@ -123,6 +79,12 @@ nav {
   justify-content: space-between;
 }
 
+.nav--left .active-link {
+  color: #0A0635;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  box-shadow: 0 0  50px 10px rgba(225, 225, 225, 0.2) ;
+}
 .nav__item {
   color: white;
   text-decoration: none;
@@ -151,8 +113,14 @@ nav {
   align-items: center;
   gap: 10px;
   padding: 0 20px;
-  background: rgba(255, 255, 255, 0.708);
+  background: rgba(255, 255, 255, 1);
   border-radius: 5px;
+}
+.nav--right .active-link {
+  color: #0A0635;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  box-shadow: 0 0  50px 10px rgba(225, 225, 225, 0.2) ;
 }
 .listing {
   font-size: 24px;
@@ -169,56 +137,6 @@ nav {
   margin: 0;
   color: #0A0635;
 }
-.nav--right:hover {
-  background-color: rgba(225, 225, 225, 0.5)
-}
 
-/* FOOTER from here */
-footer {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-.footer {
-  margin: 0 auto;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  max-width: 1440px;
-  font-size: 16px;
-  font-weight: 300;
-  gap: 10%;
-}
-.footer__title {
-  font-size: 24px;
-  font-weight: 700;
-}
-.brand__container {
-  flex-grow: 1;
-}
-.brands {
-  display: flex;
-  justify-content: space-between;
-}
-.contactUs__container {
-  flex-grow: 2;
-}
-.contactUs__list{
-  display: flex;
-  justify-content: space-between;
-}
-.title {
-  font-size : 12px;
-  
-}
-.socialMedia__container {
-  flex-grow: 1;
-}
-.socialMedia__container ul {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  padding: 0
-}
-.socialMedia__item {
-  font-size: 32px;
-}
+
 </style>

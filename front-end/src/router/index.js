@@ -33,8 +33,8 @@ const router = createRouter({
       name: 'listing',
       component: Listing
     }
-
-  ]
+  ],
+  linkActiveClass: 'active-link'
 })
 
 export default router
