@@ -1,6 +1,7 @@
 <template>
 <div class="footer">
-      <div class="brand__container">
+      <div class="footer__content">
+        <div class="brand__container">
       <p class="footer__title">Brand</p>
       <div class="brands">
         <div class="brand__list">
@@ -43,7 +44,8 @@
         <li class="socialMedia__item"><i class="fa-brands fa-square-youtube"></i></li>
       </ul>
     </div>
-  </div>
+      </div>
+</div>
 </template>
 
 <script>
@@ -53,11 +55,12 @@
 </script>
 
 <style scoped>
-footer {
-  background-color: rgba(255, 255, 255, 0.1);
+.footer {
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 100%;
 }
 
-.footer {
+.footer__content {
   padding: 0 20px;
   color: white;
   display: flex;
