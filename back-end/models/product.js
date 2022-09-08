@@ -31,6 +31,14 @@ const productSchema = new Schema({
         type: Number,
         required: true,
     },
+    price: {
+        type: Number,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
 }, {timestamps: true});
 
 // automatically looking for Products model in MHK collection in mongoDB
