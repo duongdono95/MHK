@@ -38,13 +38,19 @@
                 </div>
                 <div class="input__group">
                     <input id="headphone" type="radio" value="headphone"><label for="headphone">Headphone</label>
-                </div>
-               
-                    
+                </div>    
             </div>
             <div class="form__group">
                 <label for="stock">Stock:</label>
                 <input id="stock" class="form__element" type="number">
+            </div>
+            <div class="form__group">
+                <label for="price">Price:</label>
+                <input id="price" class="form__element" type="number" min="10"  step="any">
+            </div>
+            <div class="form__group">
+                <label for="description">Descriptions:</label>
+                <textarea id="description" class="description" type="number" cols="51" rows="2"> </textarea>
             </div>
         </form>
         </div>
@@ -70,7 +76,7 @@
     font-size : 36px;
     font-weight : 700;
     text-align : center;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
 }
 .listing__container {
     height: 66.5vh;
@@ -89,6 +95,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    color: white;
 }
 .form__group label{
     min-width : 30%;
@@ -100,6 +107,8 @@
     background-color: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255, 255, 255, 0.7);
     border-radius: 50px;
+    color: white;
+    padding: 10px 20px 10px 20px;
 }
 .form__group__radio {
     display: flex;
@@ -118,5 +127,14 @@
 .input__group {
     margin-right: 4.5%;
     flex-wrap: wrap;
+}
+.description {
+    flex: 1;
+    min-width: 300px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px 10px 20px;
 }
 </style>

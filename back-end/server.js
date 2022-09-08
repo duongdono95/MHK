@@ -3,7 +3,8 @@ const cors = require ("cors");
 const fs = require("fs");
 const app = express();
 const mongoose = require('mongoose');
-
+// import the model from ./models/product.js
+const Product = require ('./models/product')
 
 
 app.use(cors());
@@ -20,7 +21,16 @@ mongoose.connection.on('connected', () => {
     console.log('successfully connected')
 })
 // get method
-
+app.get('/listings',(req, res) => {
+    const listingProducts = new Product({
+        sellerName: 'Duong',
+        productName: 'Headphones 1',
+        brand: 'Apple',
+        photoUrl: 'http://',
+        condition: 'New',
+        
+    });
+} )
 
 
 // post method
