@@ -20,7 +20,7 @@ mongoose.connection.on('connected', () => {
     console.log('successfully connected')
 })
 // get method
-app.get("/keyboards", async (req, res) => {
+app.get("/all-listings", async (req, res) => {
     Product.find()
     .then((result) => {
         res.send(result);
