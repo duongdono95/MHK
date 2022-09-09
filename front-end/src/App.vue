@@ -33,7 +33,23 @@
 
 <script>
   export default {
-   
+    data() {
+      return {
+        productsArray: []
+      }
+    },
+    methods: {
+      async getAllListings() {
+        const response = await fetch('/localhost:3000/keyboards');
+        const data = await response.json();
+        console.log(data);
+        this.productsArray = data;
+        console.log(this.productsArray);
+      }
+    },
+    mounted(){
+      this.getAllListings();
+    }
   }
 </script>
 
