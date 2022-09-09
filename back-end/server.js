@@ -21,27 +21,6 @@ mongoose.connection.on('connected', () => {
     console.log('successfully connected')
 })
 
-// app.get('/listings',(req, res) => {
-//     const listingProducts = new Product({
-//         sellerName: 'Duong',
-//         productName: 'Headphones 1',
-//         brand: 'Apple',
-//         photoUrl: 'http://',
-//         condition: 'New',
-//         category: 'headphone',
-//         stock: '1',
-//         price: '100',
-//         description: 'abc xyz',
-//     });
-
-//     listingProducts.save()
-//         .then((result) => {
-//             res.send(result)
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         })
-// } );
 app.post('/listings', (req, res) => {
     const listingProduct = new Product(req.body)
     console.log(listingProduct)
@@ -55,33 +34,6 @@ app.post('/listings', (req, res) => {
 } )
 
 
-
-
-
-
-
-
-// app.get('/listings',(req, res) => {
-//     const listingProducts = new Product({
-//         sellerName: 'Duong',
-//         productName: 'Headphones 2',
-//         brand: 'Apple',
-//         photoUrl: 'http://',
-//         condition: 'New',
-//         category: 'headphone',
-//         stock: '1',
-//         price: '100',
-//         description: 'abc xyz',
-//     });
-
-//     listingProducts.save()
-//         .then((result) => {
-//             res.send(result)
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         })
-// } );
 
 // // get method -> sending request to mongoDB to get all the data.
 // app.get('/all-listings',(req, res) => {
