@@ -20,9 +20,22 @@ mongoose.connection.on('connected', () => {
     console.log('successfully connected')
 })
 // get method
+app.get("/keyboards", async (req, res) => {
+    Product.find()
+    .then((result) => {
+        res.send(result);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+});
 
-
-
+// app.get("/", (req, res) => {
+//     const id = req.params.id;
+//     Product.findById(id, (err, todo) =>{
+//         res.json(todo);
+//     });
+//   });
 // post method
 
 
