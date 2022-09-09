@@ -21,7 +21,7 @@ mongoose.connection.on('connected', () => {
     console.log('successfully connected')
 })
 // get method
-app.get("/all-listings", async (req, res) => {
+app.get("/all-listings", (req, res) => {
     Product.find()
     .then((result) => {
         res.send(result);
