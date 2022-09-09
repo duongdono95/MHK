@@ -1,11 +1,5 @@
 <template>
-  <div>
-    <div class="banner__container"></div>
-    <p class="intro">Current Lisitings</p>
-
-    <button>View</button>
-    <div class="products_list">
-      <div class="product">
+    <div class="product">
         <div class="image__container">
           <img class="img" src="http://vision.stanford.edu/aditya86/ImageNetDogs/images/n02106166-Border_collie/n02106166_1663.jpg" alt="product">
         </div>
@@ -13,64 +7,17 @@
         <p class="seller__name">Duong</p>
         <p class="price">$119</p>
         <button class="product__button" type="button">See More -></button>
-    </div>
-    </div>
-  </div>
-  <Footer />
+      </div>
 </template>
 
 <script>
-  import Footer from '../components/Footer.vue';
-  export default {
-    components: {
-      Footer
-    },
-    data() {
-      return {
-        productsArray: []
-      }
-    },
-    methods: {
-      async getAllListings() {
-        const response = await fetch('/localhost:3000/all-listings');
-        const data = await response.json();
-        console.log(data);
-        this.productsArray = data;
-        console.log(this.productsArray);
-      }
-    },
-    mounted(){
-      this.getAllListings();
+    export default {
+        
     }
-  }
 </script>
 
 <style scoped>
-.banner__container {
-  margin-top: 3%;
-  height: 400px;
-  width: 100%;
-  background-image: url(../assets/Keyboard-Banner.png);
-  background-size: cover;
-}
-.intro {
-  color: white;
-  font-size: 36px;
-  font-weight : 700;
-  text-align: center;
-  margin: 50px 0 30px 0;
-}
-
-.products_list {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-/* product css */
-.product {
+    .product {
   width: 400px;
   border: 2px solid #C51EED;
   border-radius: 10px;

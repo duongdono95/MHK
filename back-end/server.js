@@ -3,7 +3,8 @@ const cors = require ("cors");
 const fs = require("fs");
 const app = express();
 const mongoose = require('mongoose');
-
+// import the model from ./models/product.js
+const Product = require ('./models/product')
 
 
 app.use(cors());
@@ -36,6 +37,43 @@ app.get("/all-listings", async (req, res) => {
 //         res.json(todo);
 //     });
 //   });
+
+app.post('/listings', (req, res) => {
+    const listingProduct = new Product(req.body)
+    console.log(listingProduct)
+    listingProduct.save()
+        .then((result)  => {
+            res.send(result)
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+} )
+
+
+
+// // get method -> sending request to mongoDB to get all the data.
+// app.get('/all-listings',(req, res) => {
+//     Product.find()
+//         .then((result) => {
+//             res.send(result);
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//         })
+// });
+
+// // get method -> finding the single blog
+// app.get('/single-product', (req, res) => {
+//     Product.findById('631958d9882f2c5057c000ff')
+//         .then((result) => {
+//             res.send(result);
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//         })
+// })
+
 // post method
 
 
@@ -45,14 +83,3 @@ app.get("/all-listings", async (req, res) => {
 
 
 // put method
-
-
-
-
-
-
-// mongoose
-
-
-
-// listen on local host
