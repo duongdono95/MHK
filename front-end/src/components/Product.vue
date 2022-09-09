@@ -1,18 +1,30 @@
 <template>
     <div class="product">
         <div class="image__container">
-          <img class="img" src="http://vision.stanford.edu/aditya86/ImageNetDogs/images/n02106166-Border_collie/n02106166_1663.jpg" alt="product">
+          <img class="img" src="{{photoURL}}" alt="product">
         </div>
-        <p class="product__name">Keyboard 1</p>
-        <p class="seller__name">Duong</p>
-        <p class="price">$119</p>
+        <p class="product__name">{{productName}}</p>
+        <p class="seller__name">{{sellerName}}</p>
+        <p class="price">${{price}}.00</p>
         <button class="product__button" type="button">See More -></button>
+
+        <!-- {{productData}} -->
       </div>
 </template>
 
 <script>
     export default {
-        
+        props: {
+          productData: Object
+        },
+        data () {
+          return{
+            photoURL: this.productData.photoURL,
+            productName: this.productData.productName,
+            sellerName: this.productData.sellerName, 
+            price: this.productData.price
+          }
+        }
     }
 </script>
 
