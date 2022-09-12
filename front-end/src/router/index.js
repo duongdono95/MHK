@@ -4,6 +4,8 @@ import Keyboards from '../views/Keyboards.vue'
 import Mice from '../views/Mice.vue'
 import Headphones from '../views/Headphones.vue'
 import Listing from '../views/Listing.vue'
+import MyProfile from '../views/MyProfile.vue'
+import Details from '../views/Details.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +34,16 @@ const router = createRouter({
       path: '/listing',
       name: 'listing',
       component: Listing
+    },
+    {
+      path: '/myProfile',
+      name: 'myProfile',
+      component: MyProfile
+    },
+    {
+      path: '/details',
+      name: 'details',
+      component: Details
     }
   ],
   linkActiveClass: 'active-link'

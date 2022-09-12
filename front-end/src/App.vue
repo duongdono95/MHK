@@ -7,7 +7,7 @@
       <div class="logo">
         <img src="./assets/Logo.svg" alt="Logo">
       </div>
-      <a href="/" type="button">Sign In</a>
+      <RouterLink to="/myProfile"><i class="fa-solid fa-user"></i>   My Profile</RouterLink>
     </div>
     <nav>
       <div class="nav--left">
@@ -33,7 +33,6 @@
 
 <script>
   export default {
-   
   }
 </script>
 
