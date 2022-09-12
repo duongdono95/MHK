@@ -80,7 +80,7 @@
   }
   .img {
     width: 100%;
-    max-height: 300px;
+    max-height: 450px;
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
