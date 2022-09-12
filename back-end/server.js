@@ -20,6 +20,23 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection.on('connected', () => {
     console.log('successfully connected')
 })
+// get method
+app.get("/all-listings", (req, res) => {
+    Product.find()
+    .then((result) => {
+        res.send(result);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+});
+
+// app.get("/", (req, res) => {
+//     const id = req.params.id;
+//     Product.findById(id, (err, todo) =>{
+//         res.json(todo);
+//     });
+//   });
 
 app.post('/listings', (req, res) => {
     const listingProduct = new Product(req.body)

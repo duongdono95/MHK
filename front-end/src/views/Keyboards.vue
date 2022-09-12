@@ -2,27 +2,37 @@
   <div>
     <div class="banner__container"></div>
     <p class="intro">Current Lisitings</p>
-
-    <button>View</button>
     <div class="products_list">
-      <div class="product">
-        <div class="image__container">
-          <img class="img" src="http://vision.stanford.edu/aditya86/ImageNetDogs/images/n02106166-Border_collie/n02106166_1663.jpg" alt="product">
-        </div>
-        <p class="product__name">Keyboard 1</p>
-        <p class="seller__name">Duong</p>
-        <p class="price">$119</p>
-        <button class="product__button" type="button">See More -></button>
-    </div>
+      <Product v-for = "product of productsArray" :productData = product :key = "product._id" />
     </div>
   </div>
   <Footer />
 </template>
 
 <script>
+  import Product from '../components/Product.vue';
   import Footer from '../components/Footer.vue';
   export default {
-  components: { Footer}
+    components: {
+      Footer,
+      Product
+    },
+    data() {
+      return {
+        productsArray: []
+      }
+    },
+    methods: {
+      async getAllListings() {
+        const response = await fetch('http://localhost:3000/all-listings');
+        const data = await response.json();
+        this.productsArray = data;
+        console.log(this.productsArray);
+      }
+    },
+    mounted(){
+      this.getAllListings();
+    }
   }
 </script>
 
