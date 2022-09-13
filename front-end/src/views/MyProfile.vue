@@ -29,24 +29,37 @@
             <p class="label">Email: </p>
             <p class="info name">seller.mhk@gmail.com</p>
           </div>
-          
-           
-           
-           
-       </div>
-    </div>
+        </div>
+      </div>
+      <p class="listing__title">Your Listings</p>
+      <div class="listing__container">
+        <YourListings v-for="product of productsArray" :productData = product :key = "product._id"/>
+      </div>
     <Footer />
   </template>
   
   <script>
+    import YourListings from '../components/YourListings.vue'
     import Footer from '../components/Footer.vue';
+import YourListings1 from '../components/YourListings.vue';
     export default {
-        components : {Footer},
+        components : { Footer, YourListings },
         data () {
           return {
-            
+            productsArray: [],
           }
-        }
+        },
+        methods: {
+          async getAllListings() {
+          const response = await fetch('http://localhost:3000/MyProfile');
+          const data = await response.json();
+          this.productsArray = data;
+          console.log(this.productsArray);
+      }
+    },
+    mounted(){
+      this.getAllListings();
+    }
     }
   </script>
   
@@ -127,6 +140,22 @@
     background: linear-gradient(to right, #1095C9, #C51EED);
     border: 2px solid white;
     box-shadow: 0 0  10px 5px rgba(225, 225, 225, 0.2) ;
+  }
+  .listing__container {
+    margin: 30px auto 0 auto;
+    max-width: 1400px;
+    max-width: 1400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+  }
+  .listing__title {
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+    width: 1400px;
+    margin: 20px auto;
+    padding-left: 15px;
   }
   </style>
   
