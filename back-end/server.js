@@ -79,10 +79,10 @@ app.post('/listings', (req, res) => {
 
 
 // delete method
-app.delete("localhost:3000/keyboardListing/:id", (req, res) => {
+app.delete("localhost:3000/myProfile/:id", (req, res) => {
     const id = req.params.id;
 
-    keyboardListing.findByIdAndDelete(id)
+    myProfile.findByIdAndDelete(id)
     .then(result => {
      res.json({redirect: '/myProfile'})   
     })
