@@ -30,14 +30,25 @@ app.get("/all-listings", (req, res) => {
         console.log(err);
     })
 });
+// get method for myProfile
+// app.get("/all-listings", (req, res) => {
+//     Product.filter({sellerName : "DuongDono" })
+//     .then((result) => {
+//         console.log(result)
+//         res.send(result);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     })
+// });
+app.get("/MyProfile", (req, res) => {
+    Product.find({sellerName : "DuongDono" }, (error, results) => {
+        console.log(results);
+        res.json(results)
+    })
+});
 
-// app.get("/", (req, res) => {
-//     const id = req.params.id;
-//     Product.findById(id, (err, todo) =>{
-//         res.json(todo);
-//     });
-//   });
-
+// Post
 app.post('/listings', (req, res) => {
     const listingProduct = new Product(req.body)
     console.log(listingProduct)
@@ -52,29 +63,6 @@ app.post('/listings', (req, res) => {
 
 
 
-// // get method -> sending request to mongoDB to get all the data.
-// app.get('/all-listings',(req, res) => {
-//     Product.find()
-//         .then((result) => {
-//             res.send(result);
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         })
-// });
-
-// // get method -> finding the single blog
-// app.get('/single-product', (req, res) => {
-//     Product.findById('631958d9882f2c5057c000ff')
-//         .then((result) => {
-//             res.send(result);
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         })
-// })
-
-// post method
 
 
 

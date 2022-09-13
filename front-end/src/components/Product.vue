@@ -1,14 +1,14 @@
 <template>
     <div class="product">
         <div class="image__container">
-          <img class="img" src="{{photoURL}}" alt="product">
+          <img class="img" src="{{photoUrl}}" alt="product">
         </div>
         <p class="product__name">{{productName}}</p>
         <p class="seller__name">{{sellerName}}</p>
         <p class="price">${{price}}.00</p>
         <button class="product__button" type="button">See More -></button>
 
-        <!-- {{productData}} -->
+        {{productData}}
       </div>
 </template>
 
@@ -19,7 +19,7 @@
         },
         data () {
           return{
-            photoURL: this.productData.photoURL,
+            photoUrl: this.productData.photoUrl,
             productName: this.productData.productName,
             sellerName: this.productData.sellerName, 
             price: this.productData.price
@@ -82,7 +82,7 @@
 .product__button:hover {
   background: -webkit-linear-gradient(to right, #1095C9, #C51EED);
   background: linear-gradient(to right, #1095C9, #C51EED);
-  border: 2px solid transparent;
+  border: 2px solid white;
   box-shadow: 0 0  10px 5px rgba(225, 225, 225, 0.2) ;
 }
 </style>
