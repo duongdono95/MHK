@@ -67,12 +67,12 @@ app.post('/listings', (req, res) => {
 
 
 // delete method
-app.delete("localhost:3000/myProfile/:id", (req, res) => {
+app.delete("/MyProfile/:id", (req, res) => {
     const id = req.params.id;
 
-    myProfile.findByIdAndDelete(id)
+    Product.findByIdAndDelete(id)
     .then(result => {
-     res.json({redirect: '/myProfile'})   
+     res.json({redirect: '/MyProfile'})   
     })
     .catch(err => {
         console.log(err);
