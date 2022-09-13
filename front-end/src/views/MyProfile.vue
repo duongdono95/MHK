@@ -33,7 +33,7 @@
       </div>
       <p class="listing__title">Your Listings</p>
       <div class="listing__container">
-        <YourListings v-for="product of productsArray" :productData = product :key = "product._id"/>
+        <YourListings @deleteProduct='deleteProduct' v-for="product of productsArray" :productData = product :key = "product._id"/>
       </div>
     <Footer />
   </template>
@@ -55,8 +55,17 @@ import YourListings1 from '../components/YourListings.vue';
           const data = await response.json();
           this.productsArray = data;
           console.log(this.productsArray);
-      }
-    },
+          },
+          async deleteProduct(_id){
+            const id = _id;
+            console.log(id);
+            const response = await fetch (`http://localhost:3000/MyProfile/${id}`,{
+              method:'DELETE'
+            });
+            const data = await response.text();
+            this.getAllListings();
+          } 
+        },
     mounted(){
       this.getAllListings();
     }

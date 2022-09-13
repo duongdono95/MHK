@@ -6,7 +6,7 @@
         <p class="product__name">{{productName}}</p>
         <p class="price">${{price}}.00</p>
         <div class="btn__container">
-          <i class="fa-solid fa-trash"></i>
+          <i @click="$emit('deleteProduct', productData._id)" class="fa-solid fa-trash"></i>
           <i class="fa-solid fa-pen-to-square"></i>
         </div>
       </div>
