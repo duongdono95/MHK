@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-      <div class="range__category">
+      <div class="range__category reverse">
         <div class="range__text">
           <div>
             <ul class="range__list">
@@ -90,15 +90,17 @@
   width: 100%;
   background-image: url(../assets/Keyboard-Banner.png);
   background-size: cover;
+  filter: brightness(80%);
 }
 
 .banner__text{
-  display: inline-block;
-  width: 500px;
+  display: flex;
+  width: 900px;
   height: 400px;
+  margin: 0 auto;
   text-align: center;
-  margin: auto;
-  vertical-align: middle;
+  align-items: center;
+  font-size: 2rem;
 }
 
 .range__title{
@@ -115,18 +117,24 @@
 
 .range__category{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin: 3em 0;
   gap: 1em;
 }
 
+.reverse{
+  flex-wrap: wrap-reverse;
+}
+
 .range__text{
-  border: 2px solid white;
+  border: 2px solid #C51EED;
   border-radius: 10px;
   padding: 2em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 0 0 30px 10px rgba(225, 225, 225, 0.1);
 }
 .range__list{
   list-style: none;
@@ -142,19 +150,25 @@
 }
 
 .paragraph{
-  margin-top: 1em;
-}
-
-.range__button{
-  padding: 10px 30px;
-  background: linear-gradient(to right, #1095C9, #C51EED);
-  border-radius: 10px;
-  width: 150px;
-  text-align: center;
+  margin: 1em 0;
 }
 
 .range__button a{
   text-decoration: none;
   color: white;
+}
+
+.range__button {
+  padding: 10px 30px;
+  font-weight: 700;
+  border-radius: 10px;
+  border: 2px solid #1095C9;
+  text-align: center;
+}
+.range__button:hover {
+  background: -webkit-linear-gradient(to right, #1095C9, #C51EED);
+  background: linear-gradient(to right, #1095C9, #C51EED);
+  border: 2px solid white;
+  box-shadow: 0 0  10px 5px rgba(225, 225, 225, 0.2) ;
 }
 </style>
