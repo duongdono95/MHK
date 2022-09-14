@@ -39,6 +39,10 @@ const productSchema = new Schema({
         type: String,
         required: true,
     },
+    comments: {
+        userName: String,
+        comment__conent: String,
+    }
 }, {timestamps: true});
 
 // automatically looking for Products model in MHK collection in mongoDB
