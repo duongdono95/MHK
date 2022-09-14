@@ -7,7 +7,7 @@
         <p class="price">${{price}}.00</p>
         <div class="btn__container">
           <i @click="$emit('deleteProduct', productData._id)" class="fa-solid fa-trash"></i>
-          <i class="fa-solid fa-pen-to-square"></i>
+          <RouterLink to="/Edit"><i class="fa-solid fa-pen-to-square"></i></RouterLink>
         </div>
       </div>
 </template>

@@ -41,7 +41,6 @@
   <script>
     import YourListings from '../components/YourListings.vue'
     import Footer from '../components/Footer.vue';
-import YourListings1 from '../components/YourListings.vue';
     export default {
         components : { Footer, YourListings },
         data () {
