@@ -4,11 +4,11 @@
           <img class="img" src="{{photoUrl}}" alt="product">
         </div>
         <p class="product__name">{{productName}}</p>
-        <p class="seller__name">{{sellerName}}</p>
         <p class="price">${{price}}.00</p>
-        <button class="product__button" type="button">See More -></button>
-
-        {{productData}}
+        <div class="btn__container">
+          <i @click="$emit('deleteProduct', productData._id)" class="fa-solid fa-trash"></i>
+          <i class="fa-solid fa-pen-to-square"></i>
+        </div>
       </div>
 </template>
 
@@ -19,6 +19,7 @@
         },
         data () {
           return{
+            _id: this.productData._id,
             photoUrl: this.productData.photoUrl,
             productName: this.productData.productName,
             sellerName: this.productData.sellerName, 
@@ -29,6 +30,19 @@
 </script>
 
 <style scoped>
+  .btn__container {
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+  }
+  .fa-solid {
+    color: white;
+    font-size: 32px;
+  }
+  .fa-solid:hover {
+    box-shadow: 0 0  30px 10px rgba(225, 225, 225, 0.1) ;
+    color: #1095C9;
+  }
     .product {
   width: 400px;
   border: 2px solid #C51EED;
@@ -58,7 +72,7 @@
   margin: 0;
 }
 .seller__name {
-  font-size: 20px;
+  font-size: 16px;
   color: white;
   margin: 0;
   font-weight: 300;
@@ -82,7 +96,7 @@
 .product__button:hover {
   background: -webkit-linear-gradient(to right, #1095C9, #C51EED);
   background: linear-gradient(to right, #1095C9, #C51EED);
-  border: 2px solid white;
+  border: 2px solid transparent;
   box-shadow: 0 0  10px 5px rgba(225, 225, 225, 0.2) ;
 }
 </style>

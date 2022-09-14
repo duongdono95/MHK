@@ -7,6 +7,7 @@
         <p class="seller__name">{{sellerName}}</p>
         <p class="price">${{price}}.00</p>
         <button class="product__button" type="button">See More -></button>
+        <button class="product__button" type="button">See More -></button>
 
         {{productData}}
       </div>
