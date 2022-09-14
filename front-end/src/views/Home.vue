@@ -93,9 +93,12 @@
 }
 
 .banner__text{
+  display: inline-block;
   width: 500px;
+  height: 400px;
   text-align: center;
   margin: auto;
+  vertical-align: middle;
 }
 
 .range__title{
