@@ -1,39 +1,39 @@
 <template>
     <div class="details__container">
        <div class="image__container">
-           <img class="img" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" alt="Photo">
+           <img class="img" :src="productData.photoUrl" alt="Photo">
        </div>
        <div class="product__detail">
           <div class="detail__group_first">
-            <p class="label">Name: </p>
-            <p class="info middle">Lorem Ipsum</p>
-            <button class="edit__btn">Edit</button>
+            <p class="name">{{productData.productName}}</p>
+            <p class="date">{{productData.updatedAt}}</p>
           </div>
           <div class="detail__group">
-            <p class="label">Age: </p>
-            <p class="info location">Lorem Ipsum</p>
+            <p class="label">Seller Name: </p>
+            <p class="info location">{{productData.sellerName}}</p>
           </div>
           <div class="detail__group">
-            <p class="label">Location: </p>
-            <p class="info location">Lorem Ipsum</p>
+            <p class="label">Condition: </p>
+            <p class="info location">{{productData.condition}}</p>
           </div>
           <div class="detail__group">
-            <p class="label">Bio: </p>
-            <p class="info bio">Lorem Ipsum</p>
+            <p class="label">Stock: </p>
+            <p class="info bio">{{productData.stock}}</p>
           </div>
           <div class="detail__group">
-            <p class="label">Mobile number: </p>
-            <p class="info name">Lorem Ipsum</p>
+            <p class="label">Price: </p>
+            <p class="info bio">${{productData.price}}.00</p>
           </div>
           <div class="detail__group">
-            <p class="label">Email: </p>
-            <p class="info name">Lorem Ipsum</p>
+            <p class="label">Description: </p>
+            <p class="info location">{{productData.description}}</p>
           </div>
+          <button class="product__button" type="button">Contact Seller</button>
         </div>
       </div>
-      <p class="listing__title">Your Listings</p>
+      <p class="listing__title">Related Products</p>
       <div class="listing__container">
-        <YourListings @deleteProduct='deleteProduct' v-for="product of productsArray" :productData = product :key = "product._id"/>
+        
       </div>
     <Footer />
   </template>
@@ -48,12 +48,19 @@
       },
       data () {
         return {
-          productsArray: [],
+          productData: [],
         }
       },
       methods: {
+        async getProductData() {
+          const response = await fetch(`http://localhost:3000/all-listings/${this.$route.params.id}`);
+          const data = await response.json();
+          this.productData = data;
+          console.log(this.productData);
+        }
       },
       mounted(){
+        this.getProductData();
       }
     }
   </script>
@@ -72,7 +79,7 @@
   }
   .product__detail {
     max-width: 50%;
-    max-height: 50vh;
+    /* max-height: 50vh; */
     color: #fff;
     flex-grow: 1;
     padding: 20px;
@@ -93,8 +100,18 @@
     object-fit: cover;
     border-radius: 20px;
   }
+  .date {
+    font-size:14px;
+    color: rgba(255, 255, 255, 0.523);
+  }
+  .name {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+  }
   .detail__group_first {
     display: flex;
+    flex-direction: column;
   }
   .detail__group {
     display: flex;
@@ -108,6 +125,7 @@
   .info {
     font-size: 32px;
     margin: 0;
+    text-transform: capitalize;
   }
   .bio {
     padding-top: 10px;
@@ -152,5 +170,21 @@
     margin: 20px auto;
     padding-left: 15px;
   }
+  .product__button {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 10px;
+  border: 2px solid #1095C9;
+  background-color: transparent;
+  color: white;
+}
+.product__button:hover {
+  background: -webkit-linear-gradient(to right, #1095C9, #C51EED);
+  background: linear-gradient(to right, #1095C9, #C51EED);
+  border: 2px solid white;
+  box-shadow: 0 0  10px 5px rgba(225, 225, 225, 0.2) ;
+}
   </style>
   

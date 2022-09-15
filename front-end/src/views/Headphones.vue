@@ -24,7 +24,7 @@
     },
     methods: {
       async getAllListings() {
-        const response = await fetch('http://localhost:3000/all-listings/headphone');
+        const response = await fetch('http://localhost:3000/headphone');
         const data = await response.json();
         this.productsArray = data;
         console.log(this.productsArray);

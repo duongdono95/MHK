@@ -5,7 +5,7 @@ import Mice from '../views/Mice.vue'
 import Headphones from '../views/Headphones.vue'
 import Listing from '../views/Listing.vue'
 import MyProfile from '../views/MyProfile.vue'
-import Details from '../views/Details.vue'
+import Details from '../views/SingleProduct.vue'
 import Edit from '../views/edit.vue'
 
 const router = createRouter({
@@ -42,7 +42,7 @@ const router = createRouter({
       component: MyProfile
     },
     {
-      path: '/details',
+      path: '/all-listings/:id',
       name: 'details',
       component: Details
     },
