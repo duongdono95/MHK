@@ -1,13 +1,13 @@
 <template>
     <div class="product">
         <div class="image__container">
-          <img class="img" src="{{photoUrl}}" alt="product">
+          <img class="img" :src="photoUrl" alt="product">
         </div>
         <p class="product__name">{{productName}}</p>
         <p class="price">${{price}}.00</p>
         <div class="btn__container">
           <i @click="$emit('deleteProduct', productData._id)" class="fa-solid fa-trash"></i>
-          <RouterLink to="/Edit"><i class="fa-solid fa-pen-to-square"></i></RouterLink>
+          <RouterLink :to="{name: 'edit',params: {id:productData._id}}"><i class="fa-solid fa-pen-to-square"></i></RouterLink>
         </div>
       </div>
 </template>
@@ -40,7 +40,7 @@
     font-size: 32px;
   }
   .fa-solid:hover {
-    box-shadow: 0 0  30px 10px rgba(225, 225, 225, 0.1) ;
+    box-shadow: 0 0  10px 5px rgba(225, 225, 225, 0.2) ;
     color: #1095C9;
   }
     .product {
@@ -97,6 +97,6 @@
   background: -webkit-linear-gradient(to right, #1095C9, #C51EED);
   background: linear-gradient(to right, #1095C9, #C51EED);
   border: 2px solid transparent;
-  box-shadow: 0 0  10px 5px rgba(225, 225, 225, 0.2) ;
+  box-shadow: 0 0  10px 5px rgba(225, 225, 225, 0.5) ;
 }
 </style>

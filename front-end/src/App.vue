@@ -50,6 +50,7 @@
   width: 100%;
   color: white;
   align-items: center;
+  flex-wrap: wrap;
 }
 .heading a {
   padding: 10px 30px;
@@ -66,6 +67,7 @@ nav {
   max-width: 1400px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .selected {
   color: #0A0635;
@@ -75,7 +77,9 @@ nav {
   color: white;
   width: 40%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  max-width: 560px;
 }
 
 .nav--left .active-link {
