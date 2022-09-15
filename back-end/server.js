@@ -20,7 +20,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection.on('connected', () => {
     console.log('successfully connected')
 })
-// get method
+// get method for all Listing
 app.get("/all-listings", (req, res) => {
     Product.find()
     .then((result) => {
@@ -30,23 +30,45 @@ app.get("/all-listings", (req, res) => {
         console.log(err);
     })
 });
-// get method for myProfile
-// app.get("/all-listings", (req, res) => {
-//     Product.filter({sellerName : "DuongDono" })
-//     .then((result) => {
-//         console.log(result)
-//         res.send(result);
-//     })
-//     .catch((err) => {
-//         console.log(err);
-//     })
-// });
-app.get("/MyProfile", (req, res) => {
-    Product.find({sellerName : "DuongDono" }, (error, results) => {
-        console.log(results);
+app.get("/all-listings/keyboards", (req, res) => {
+    Product.find({category : "keyboard" }, (error, results) => {
+        // console.log(results);
         res.json(results)
     })
 });
+app.get("/all-listings/mouse", (req, res) => {
+    Product.find({category : "mouse" }, (error, results) => {
+        // console.log(results);
+        res.json(results)
+    })
+});
+app.get("/all-listings/headphone", (req, res) => {
+    Product.find({category : "headphone" }, (error, results) => {
+        // console.log(results);
+        res.json(results)
+    })
+});
+
+
+//get method for myprofile
+app.get("/MyProfile", (req, res) => {
+    Product.find({sellerName : "DuongDono" }, (error, results) => {
+        // console.log(results);
+        res.json(results)
+    })
+});
+//get method for edit page
+app.get("/edit/:id", (req, res) => {
+    const id = req.params.id;
+    console.log(req.params.id)
+    Product.findById(id)
+        .then (result => {
+            res.json(result)  
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+})
 
 // Post
 app.post('/listings', (req, res) => {
@@ -61,10 +83,30 @@ app.post('/listings', (req, res) => {
         })
 } )
 
-
-
-
-
+//Put for Edit page
+app.put('/edit/:id', (req, res, next) => {
+    console.log(req.params.id);
+    Product.findOneAndUpdate({_id: req.params.id}, {
+        $set: {
+            productName: req.body.productName,
+            brand: req.body.brand,
+            photoUrl: req.body.photoUrl,
+            condition: req.body.condition,
+            category: req.body.category,
+            stock: req.body.stock,
+            price: req.body.price,
+            description: req.body.description
+        }
+    })
+    .then(result => {
+        res.status(200).json({
+            updated_product: result,
+        })
+    })
+    .catch(err => {
+        console.log(err);
+    })
+})
 
 // delete method
 app.delete("/MyProfile/:id", (req, res) => {

@@ -1,11 +1,15 @@
 <template>
     <div class="container">
-        <div class="listing__container">
-            <p class="intro">Product details</p>
+        <p class="intro">Edit your Listing's details</p>
+        <div class="body">
+            <div class="image__container">
+                <img :src="productData.photoUrl" alt="">
+            </div>
+            <div class="listing__container">
             <form class="form">
             <div class="form__group">
                 <label for="seller">Seller:</label>
-                <input v-model="sellerName" id="seller" class="form__element" type="text">
+                <p>{{productData.sellerName}}</p>
             </div>
             <div class="form__group">
                 <label for="product__name">Product name:</label>
@@ -47,8 +51,10 @@
                 <textarea v-model="description" id="description" class="description" type="number" cols="51" rows="2"> </textarea>
             </div>
         </form>
-        <button @click="submitForm" class="submit__btn" type="button" >Submit</button>
+        <button @click="submitForm" class="submit__btn" type="button" >Update your Listing</button>
         </div>
+        </div>
+        
     </div>
     
     <Footer/>
@@ -60,6 +66,7 @@
         components : {Footer},
         data() {
             return {
+                productData :[],
                 sellerName: null,
                 productName: null,
                 brand: null,
@@ -69,15 +76,21 @@
                 stock: null,
                 price: null,
                 description: null,
+                
             }
         },
         methods: {
+            async getProductData() {
+                const response = await fetch(`http://localhost:3000/edit/${this.$route.params.id}`);
+                const data = await response.json();
+                this.productData = data;
+                console.log(this.productData);
+            },
             async submitForm() {
-                const response = await fetch('http://localhost:3000/listings', {
-                    method: 'POST',
+                const response = await fetch(`http://localhost:3000/edit/${this.$route.params.id}`, {
+                    method: 'PUT',
                     headers: {'content-Type': 'application/json'},
                     body: JSON.stringify({
-                        sellerName: this.sellerName,
                         productName: this.productName,
                         brand: this.brand,
                         photoUrl: this.photoUrl,
@@ -91,7 +104,10 @@
                 const data = await response.json();
                 console.log(data)
             }
-        }
+        },
+        mounted(){
+            this.getProductData();
+    }
     };
     
 </script>
@@ -101,6 +117,8 @@
     color: white;
     max-width: 1400px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 .intro {
     font-size : 36px;
@@ -108,16 +126,38 @@
     text-align : center;
     margin-bottom: 2%;
 }
+.body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+    margin-bottom: 5%;
+}
+.image__container {
+    flex-grow: 1;
+    border-radius: 20px;
+    max-height: 504px;
+    margin: 0 auto;
+    max-width: 700px;
+}
+.image__container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
 .listing__container {
-    height: 66.5vh;
+    max-width: 700px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
 }
 .form {
     display: flex;
     flex-direction: column;
-    width : 40%;
+    width : 100%;
     margin : 0 auto 30px auto;
     gap: 15px;
 
@@ -140,24 +180,6 @@
     border-radius: 50px;
     color: white;
     padding: 10px 20px 10px 20px;
-}
-.form__group__radio {
-    display: flex;
-    margin-bottom: 2%;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.form__group__radio label{
-   font-size: 20px;
-   font-weight: 500;
-}
-.form__group__radio p {
-    margin: 0;
-    min-width: 30%;
-}
-.input__group {
-    margin-right: 4.5%;
-    flex-wrap: wrap;
 }
 .description {
     flex: 1;
