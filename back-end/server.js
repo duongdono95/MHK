@@ -48,6 +48,18 @@ app.get("/MyProfile", (req, res) => {
     })
 });
 
+app.get("/single-product", (req, res) => {
+    const id = req.params.id;
+
+    Product.findById(id)
+    .then((result) => {
+        res.send(result);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+})
+
 // Post
 app.post('/listings', (req, res) => {
     const listingProduct = new Product(req.body)
