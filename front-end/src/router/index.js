@@ -6,6 +6,7 @@ import Headphones from '../views/Headphones.vue'
 import Listing from '../views/Listing.vue'
 import MyProfile from '../views/MyProfile.vue'
 import Details from '../views/Details.vue'
+import Edit from '../views/edit.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +45,11 @@ const router = createRouter({
       path: '/details',
       name: 'details',
       component: Details
+    },
+    {
+      path: '/edit/:id',
+      name: 'edit',
+      component: Edit
     }
   ],
   linkActiveClass: 'active-link'

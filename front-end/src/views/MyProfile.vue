@@ -63,7 +63,7 @@
             });
             const data = await response.text();
             this.getAllListings();
-          } 
+          },
         },
     mounted(){
       this.getAllListings();
