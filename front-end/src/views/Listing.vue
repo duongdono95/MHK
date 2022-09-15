@@ -141,24 +141,6 @@
     color: white;
     padding: 10px 20px 10px 20px;
 }
-.form__group__radio {
-    display: flex;
-    margin-bottom: 2%;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.form__group__radio label{
-   font-size: 20px;
-   font-weight: 500;
-}
-.form__group__radio p {
-    margin: 0;
-    min-width: 30%;
-}
-.input__group {
-    margin-right: 4.5%;
-    flex-wrap: wrap;
-}
 .description {
     flex: 1;
     min-width: 300px;
@@ -175,7 +157,7 @@
     background-color: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255, 255, 255, 0.7);
     border-radius: 50px;
-    color: white;
+    color: black;
     padding: 0 20px 0 20px;
 }
 .submit__btn {

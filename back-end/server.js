@@ -30,19 +30,32 @@ app.get("/all-listings", (req, res) => {
         console.log(err);
     })
 });
-app.get("/all-listings/keyboards", (req, res) => {
+
+app.get("/all-listings/:id", (req, res) => {
+    const id = req.params.id;
+    console.log(req.params.id);
+    Product.findById(id)
+        .then (result => {
+            res.json(result)
+        })
+        .catch(err => {
+            console.log(err);
+        })
+});
+
+app.get("/keyboards", (req, res) => {
     Product.find({category : "keyboard" }, (error, results) => {
         // console.log(results);
         res.json(results)
     })
 });
-app.get("/all-listings/mouse", (req, res) => {
+app.get("/mouse", (req, res) => {
     Product.find({category : "mouse" }, (error, results) => {
         // console.log(results);
         res.json(results)
     })
 });
-app.get("/all-listings/headphone", (req, res) => {
+app.get("/headphone", (req, res) => {
     Product.find({category : "headphone" }, (error, results) => {
         // console.log(results);
         res.json(results)
@@ -68,6 +81,18 @@ app.get("/edit/:id", (req, res) => {
         .catch((err) => {
             console.log(err);
         })
+})
+
+app.get("/single-product", (req, res) => {
+    const id = req.params.id;
+
+    Product.findById(id)
+    .then((result) => {
+        res.send(result);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
 })
 
 // Post
