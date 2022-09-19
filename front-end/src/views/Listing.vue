@@ -157,7 +157,7 @@
     background-color: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255, 255, 255, 0.7);
     border-radius: 50px;
-    color: black;
+    color: rgb(255, 255, 255);
     padding: 0 20px 0 20px;
 }
 .submit__btn {
