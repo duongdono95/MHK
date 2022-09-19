@@ -43,7 +43,7 @@ app.get("/all-listings/:id", (req, res) => {
         })
 });
 
-app.get("/keyboards", (req, res) => {
+app.get("/keyboard", (req, res) => {
     Product.find({category : "keyboard" }, (error, results) => {
         // console.log(results);
         res.json(results)

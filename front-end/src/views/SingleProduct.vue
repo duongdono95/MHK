@@ -33,22 +33,36 @@
       </div>
       <p class="listing__title">Related Products</p>
       <div class="listing__container">
-        
+        <RelatedProducts v-for="product of relatedListingArray " :productData = product :key = "product._id"/>
+      </div>
+      <div class="comments__section">
+        <p class="listing__title">Comments</p>
+        <div class="comment__container">
+          <div class="comment__item">
+            <div class="avatar">
+              <img src="" alt="">
+            </div>
+          </div>
+        </div>
       </div>
     <Footer />
   </template>
   
   <script>
+    import RelatedProducts from '../components/RelatedProducts.vue'
     import YourListings from '../components/YourListings.vue'
     import Footer from '../components/Footer.vue';
     export default {
       components : {
         Footer,
-        YourListings
+        YourListings,
+        RelatedProducts
       },
       data () {
         return {
-          productData: [],
+          productData: {},
+          productsArray: [],
+          relatedListingArray: []
         }
       },
       methods: {
@@ -57,10 +71,31 @@
           const data = await response.json();
           this.productData = data;
           console.log(this.productData);
+          this.getRelatedProductArray();
+
+        },
+        async getRelatedProductArray() {
+          const response = await fetch(`http://localhost:3000/${this.productData.category}`);
+          const data = await response.json();
+          this.productsArray = data;
+          console.log(this.productsArray);
+          this.relatedProduct();
+        },
+        relatedProduct() {
+          const listingId = this.productData._id;
+          console.log(listingId)
+          const rawArray = this.productsArray;  
+          const reducedLengthArray = rawArray.filter(function(item) {
+            return item._id !== listingId;
+          });
+          const shuffled = reducedLengthArray.sort(()=> 0.5 - Math.random());
+          const threeRelatedListing = shuffled.slice(0, 3);
+          this.relatedListingArray = threeRelatedListing;
         }
       },
       mounted(){
         this.getProductData();
+
       }
     }
   </script>

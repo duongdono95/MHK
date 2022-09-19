@@ -12,8 +12,8 @@
     <nav>
       <div class="nav--left">
         <RouterLink class="nav__item--home" to="/"><i class="fa-solid fa-house"></i></RouterLink>
-        <RouterLink class="nav__item" to="/keyboards">Keyboards</RouterLink>
-        <RouterLink class="nav__item" to="/headphones">Headphones</RouterLink>
+        <RouterLink class="nav__item" to="/keyboard">Keyboards</RouterLink>
+        <RouterLink class="nav__item" to="/headphone">Headphones</RouterLink>
         <RouterLink class="nav__item" to="/mice">Mice</RouterLink>
       </div>
       <div class="nav--right">
@@ -28,7 +28,7 @@
   </div>
 
 
-  <RouterView />
+  <RouterView :key="$route.fullPath"/>
 </template>
 
 <script>
@@ -40,7 +40,7 @@
 
 .header {
   max-width :1400px;
-  margin: 0 auto;
+  margin: 0 auto 2% auto;
 }
 .heading {
   max-width :1400px;

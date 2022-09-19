@@ -56,14 +56,15 @@
         </div>
         
     </div>
-    
+    <Confirmation/>
     <Footer/>
 </template>
 
 <script>
     import Footer from '../components/Footer.vue'
+    import Confirmation from '../components/Confirmation.vue'
     export default {
-        components : {Footer},
+        components : {Footer, Confirmation},
         data() {
             return {
                 productData :[],

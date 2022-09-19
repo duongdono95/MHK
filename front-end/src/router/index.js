@@ -17,7 +17,7 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/keyboards',
+      path: '/keyboard',
       name: 'keyboards',
       component: Keyboards
     },
@@ -27,7 +27,7 @@ const router = createRouter({
       component: Mice
     },
     {
-      path: '/headphones',
+      path: '/headphone',
       name: 'headphones',
       component: Headphones
     },

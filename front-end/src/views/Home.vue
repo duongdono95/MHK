@@ -21,7 +21,7 @@
           </ul>
           </div>
           <div class="range__button">
-            <RouterLink class="nav__item" to="/keyboards">Keyboards</RouterLink>
+            <RouterLink class="nav__item" to="/keyboard">Keyboards</RouterLink>
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
           </ul>
           </div>
           <div class="range__button">
-            <RouterLink class="nav__item" to="/headphones">Headphones</RouterLink>
+            <RouterLink class="nav__item" to="/headphone">Headphones</RouterLink>
           </div>
         </div>
         <div class="range__image">
