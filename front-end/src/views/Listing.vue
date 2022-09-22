@@ -1,5 +1,12 @@
 <template>
     <div class="container">
+        <div class="confirmation__background" v-show="isShow">
+            <div class="confirmation__container">
+                <i @click="switchIsShow" class="fa-solid fa-circle-xmark"></i>
+                <p class="confirmation__title">Your Listing has been updated Successfully!</p>
+                <RouterLink to="/myProfile" class="submit__btn">View Your Listings</RouterLink>
+            </div>
+        </div>
         <div class="listing__container">
             <p class="intro">Product details</p>
             <form class="form">
@@ -69,6 +76,7 @@
                 stock: null,
                 price: null,
                 description: null,
+                isShow: false,
             }
         },
         methods: {
@@ -90,6 +98,7 @@
                 });
                 const data = await response.json();
                 console.log(data)
+                this.isShow = true;
             }
         }
     };
@@ -101,6 +110,48 @@
     color: white;
     max-width: 1400px;
     margin: 0 auto;
+}
+.confirmation__background {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.confirmation__container {
+    position: relative;
+    background-color: rgb(35, 35, 35);
+    color: rgb(255, 255, 255);
+    margin: 0 auto;
+    padding: 20px 50px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.fa-solid {
+
+    font-size: 32px;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transform: translate(0 , 0);
+    border-radius: 50px;
+}
+.fa-solid:hover {
+    box-shadow: 0 0  10px 10px rgba(225, 225, 225, 0.3) ;
+}
+.confirmation__title {
+    font-size: 24px;
+    font-weight: 500;
+
 }
 .intro {
     font-size : 36px;
@@ -167,6 +218,7 @@
     background: -webkit-linear-gradient(to right, #1095C9, #C51EED);
     background: linear-gradient(to right, #1095C9, #C51EED);
     color: white;
+    text-decoration: none;
 }
 .submit__btn:hover {
     box-shadow: 0 0  10px 2px rgba(225, 225, 225, 0.2) ;
