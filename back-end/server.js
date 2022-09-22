@@ -1,3 +1,4 @@
+const detenv = require('dotenv').config();
 const express = require("express");
 const cors = require ("cors");
 const fs = require("fs");
@@ -6,11 +7,11 @@ const mongoose = require('mongoose');
 // import the model from ./models/product.js
 const Product = require ('./models/product')
 
-
 app.use(cors());
 app.use(express.json());
 // connect to mongodb
-const dbURI = 'mongodb+srv://duongdono:22051995@duongdono.xr4i0nh.mongodb.net/mhk?retryWrites=true&w=majority'
+const dbURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@duongdono.xr4i0nh.mongodb.net/mhk?retryWrites=true&w=majority`
+console.log(dbURI)
 // connect argument to mongodb
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => app.listen(3000, () => { console.log("listening ...")}) )
@@ -44,7 +45,9 @@ app.get("/all-listings/:id", (req, res) => {
 });
 
 app.get("/keyboard", (req, res) => {
+    console.log("hello")
     Product.find({category : "keyboard" }, (error, results) => {
+        console.log(results)
         // console.log(results);
         res.json(results)
     })

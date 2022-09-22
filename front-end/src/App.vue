@@ -40,7 +40,7 @@
 
 .header {
   max-width :1400px;
-  margin: 0 auto 2% auto;
+  margin: 0 auto 0 auto;
 }
 .heading {
   max-width :1400px;

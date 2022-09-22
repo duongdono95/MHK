@@ -1,5 +1,12 @@
 <template>
     <div class="container">
+        <div class="confirmation__background" v-show="isShow">
+            <div class="confirmation__container">
+                <i @click="switchIsShow" class="fa-solid fa-circle-xmark"></i>
+                <p class="confirmation__title">Your Listing has been updated Successfully!</p>
+                <RouterLink v-if="id" :to="{name: 'details',params: {id: this.id}}" class="submit__btn">View Your Listing</RouterLink>
+            </div>
+        </div>
         <p class="intro">Edit your Listing's details</p>
         <div class="body">
             <div class="image__container">
@@ -77,7 +84,8 @@
                 stock: null,
                 price: null,
                 description: null,
-                
+                isShow: false,
+                id: null,
             }
         },
         methods: {
@@ -86,6 +94,17 @@
                 const data = await response.json();
                 this.productData = data;
                 console.log(this.productData);
+                this.id = data._id;
+                this.productName = data.productName;
+                this.brand = data.brand;
+                this.photoUrl = data.photoUrl;
+                this.condition = data.condition;
+                this.category = data.category;
+                this.stock = data.stock;
+                this.price = data.price;
+                this.description = data.description;
+                this.id = data._id;
+                console.log(data._id)
             },
             async submitForm() {
                 const response = await fetch(`http://localhost:3000/edit/${this.$route.params.id}`, {
@@ -100,10 +119,15 @@
                         stock: this.stock,
                         price: this.price,
                         description: this.description,
+
                     })
                 });
                 const data = await response.json();
-                console.log(data)
+                console.log(data);
+                this.isShow = true;
+            },
+            switchIsShow () {
+                this.isShow = false;
             }
         },
         mounted(){
@@ -120,6 +144,48 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+}
+.confirmation__background {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.confirmation__container {
+    position: relative;
+    background-color: rgb(35, 35, 35);
+    color: rgb(255, 255, 255);
+    margin: 0 auto;
+    padding: 20px 50px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.fa-solid {
+
+    font-size: 32px;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transform: translate(0 , 0);
+    border-radius: 50px;
+}
+.fa-solid:hover {
+    box-shadow: 0 0  10px 10px rgba(225, 225, 225, 0.3) ;
+}
+.confirmation__title {
+    font-size: 24px;
+    font-weight: 500;
+
 }
 .intro {
     font-size : 36px;
@@ -208,6 +274,7 @@
     background: -webkit-linear-gradient(to right, #1095C9, #C51EED);
     background: linear-gradient(to right, #1095C9, #C51EED);
     color: white;
+    text-decoration: none;
 }
 .submit__btn:hover {
     box-shadow: 0 0  10px 2px rgba(225, 225, 225, 0.2) ;
