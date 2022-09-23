@@ -86,29 +86,37 @@
   }
 .banner__container {
   margin-top: 3%;
+  display: flex;
+  align-items: center;
   height: 400px;
   width: 100%;
   background-image: url(../assets/Keyboard-Banner.png);
   background-size: cover;
-  filter: brightness(80%);
 }
 
 .banner__text{
-  display: flex;
   width: 900px;
-  height: 400px;
+  font-size: 48px;
+  font-weight: 500;
   margin: 0 auto;
+  padding: 20px 0;
   text-align: center;
   align-items: center;
-  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+
 }
 
 .range__title{
   text-align: center;
-  margin: 5em 0;
-  bottom: 0;
+  padding: 30px;
+  background-color: white;
+  color: #333;
 }
-
+.range__title h2 {
+  font-size: 32px;
+  font-weight: 500;
+}
 .range__image img{
   width: 370px;
   height: 370px;

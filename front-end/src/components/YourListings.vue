@@ -1,12 +1,13 @@
 <template>
     <div class="product">
+
         <div class="image__container">
           <img class="img" :src="photoUrl" alt="product">
         </div>
         <p class="product__name">{{productName}}</p>
         <p class="price">${{price}}.00</p>
         <div class="btn__container">
-          <i @click="$emit('deleteProduct', productData._id)" class="fa-solid fa-trash"></i>
+          <i @click="$emit('deleteProduct', idAndName )" class="fa-solid fa-trash"></i>
           <RouterLink :to="{name: 'edit',params: {id:productData._id}}"><i class="fa-solid fa-pen-to-square"></i></RouterLink>
         </div>
       </div>
@@ -19,6 +20,7 @@
         },
         data () {
           return{
+            idAndName : [this.productData._id, this.productData.productName],
             _id: this.productData._id,
             photoUrl: this.productData.photoUrl,
             productName: this.productData.productName,
@@ -30,6 +32,7 @@
 </script>
 
 <style scoped>
+
   .btn__container {
     display: flex;
     justify-content: space-around;

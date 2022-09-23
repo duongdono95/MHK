@@ -1,5 +1,15 @@
 <template>
-    <div class="details__container">
+    <div class="background__container">
+      <div class="details__container">
+        <div class="confirmation__background" v-show="isShow">
+              <div class="confirmation__container">
+                  <p class="confirmation__title">Are you Sure that you want to DELETE {{this.productName}}?</p>
+                  <div class="button__container">
+                    <button @click="switchIsShow" class="cancel__btn">No</button>
+                    <button @click="submitDeleteRequest" class="submit__btn">Yes</button>
+                  </div>
+              </div>
+        </div>
        <div class="image__container">
            <img class="img" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" alt="Photo">
        </div>
@@ -31,10 +41,11 @@
           </div>
         </div>
       </div>
+    </div>
       <p class="listing__title">Your Listings</p>
       <div class="listing__container">
         <YourListings @deleteProduct='deleteProduct' v-for="product of productsArray" :productData = product :key = "product._id"/>
-      </div>
+    </div>
     <Footer />
   </template>
   
@@ -45,7 +56,10 @@
         components : { Footer, YourListings },
         data () {
           return {
+            id : null,
             productsArray: [],
+            isShow: false,
+            productName : null,
           }
         },
         methods: {
@@ -55,15 +69,27 @@
           this.productsArray = data;
           console.log(this.productsArray);
           },
-          async deleteProduct(_id){
-            const id = _id;
-            console.log(id);
-            const response = await fetch (`http://localhost:3000/MyProfile/${id}`,{
+          async deleteProduct(idAndName){
+            const id = idAndName[0];
+            const name = idAndName[1];
+            this.productName = name;
+            this.id = id;
+            console.log(this.productName);
+
+
+            this.isShow = true;
+          },
+          async submitDeleteRequest (id) {
+            const response = await fetch (`http://localhost:3000/MyProfile/${this.id}`,{
               method:'DELETE'
             });
             const data = await response.text();
+            this.isShow = false;
             this.getAllListings();
           },
+          switchIsShow () {
+                this.isShow = false;
+            }
         },
     mounted(){
       this.getAllListings();
@@ -72,16 +98,53 @@
   </script>
   
   <style scoped>
-  .details__container {
+  .confirmation__background {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
     width: 100%;
-    max-width : 1400px;
+    height: 100%;
+    display: flex;
+    align-items: center;
     margin: 0 auto;
+}
+
+.confirmation__container {
+    position: relative;
+    background-color: rgb(35, 35, 35);
+    color: rgb(255, 255, 255);
+    margin: 0 auto;
+    padding: 20px 50px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.confirmation__title {
+    font-size: 24px;
+    font-weight: 500;
+
+}
+.button__container {
+  display: flex;
+  gap: 100px;
+}
+.background__container {
+  display: flex;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+  .details__container {
+    max-width : 1400px;
+    margin: 0 auto 0 auto;
     display: flex;
     min-height: 50vh;
     height: 100%;
     flex-wrap: wrap;
-    box-sizing: border-box;
     justify-content: space-between;
+
   }
   .product__detail {
     max-width: 50%;
@@ -164,6 +227,32 @@
     width: 1400px;
     margin: 20px auto;
     padding-left: 15px;
+  }
+  .submit__btn {
+    padding: 10px 50px;
+    border-radius: 5px;
+    border: none;
+    background: -webkit-linear-gradient(to right, #1095C9, #C51EED);
+    background: linear-gradient(to right, #1095C9, #C51EED);
+    color: white;
+    text-decoration: none;
+}
+.submit__btn:hover {
+    box-shadow: 0 0  10px 2px rgba(225, 225, 225, 0.2) ;
+
+}
+  .cancel__btn {
+    padding: 7px 50px;
+    border-radius: 5px;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+  }
+  .cancel__btn:hover{
+    box-shadow: 0 0  10px 2px rgba(225, 225, 225, 0.2) ;
+    background-color: white;
+    color: #333;
   }
   </style>
   
