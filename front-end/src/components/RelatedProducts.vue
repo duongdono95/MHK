@@ -27,19 +27,6 @@
 </script>
 
 <style scoped>
-  .btn__container {
-    display: flex;
-    justify-content: space-around;
-    gap: 50px;
-  }
-  .fa-solid {
-    color: white;
-    font-size: 32px;
-  }
-  .fa-solid:hover {
-    box-shadow: 0 0  10px 5px rgba(225, 225, 225, 0.2) ;
-    color: #1095C9;
-  }
     .product {
   width: 400px;
   border: 2px solid #C51EED;
@@ -63,8 +50,8 @@
 
 }
 .product__name {
-  color: white;
-  font-size: 28px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 24px;
   font-weight: 400;
   margin: 0;
 }

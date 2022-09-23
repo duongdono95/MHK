@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 // declare the schema (the structure of the document, which will be defined in the collection on mongo db)
 const Schema = mongoose.Schema;
 
@@ -46,6 +46,6 @@ const productSchema = new Schema({
 }, {timestamps: true});
 
 // automatically looking for Products model in MHK collection in mongoDB
-const Products = mongoose.model('Products', productSchema)
+const Products = mongoose.model("Products", productSchema)
 // export the model
 module.exports = Products;

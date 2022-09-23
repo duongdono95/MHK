@@ -110,8 +110,8 @@
 .range__title{
   text-align: center;
   padding: 30px;
-  background-color: white;
-  color: #333;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgb(255, 255, 255);
 }
 .range__title h2 {
   font-size: 32px;

@@ -50,14 +50,14 @@
 
 }
 .product__name {
-  color: white;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 28px;
   font-weight: 400;
   margin: 0;
 }
 .seller__name {
-  font-size: 20px;
-  color: white;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
   margin: 0;
   font-weight: 300;
 }

@@ -42,6 +42,7 @@
   max-width :1400px;
   margin: 0 auto 0 auto;
 }
+
 .heading {
   max-width :1400px;
   padding: 30px 0 30px 0;
@@ -51,6 +52,19 @@
   color: white;
   align-items: center;
   flex-wrap: wrap;
+  margin: 0 auto;
+}
+.icons {
+  margin: 0 auto;
+  flex-grow: 1;
+}
+.logo {
+  margin: 0 auto;
+  flex-grow: 1;
+}
+.fa-solid {
+  margin: 0 auto;
+  flex-grow: 1;
 }
 .heading a {
   padding: 10px 30px;
@@ -61,6 +75,7 @@
   background: -webkit-linear-gradient(to right, #1095C9, #C51EED);
   background: linear-gradient(to right, #1095C9, #C51EED);
   border-radius: 10px;
+
 }
 nav {
   width: 100%;

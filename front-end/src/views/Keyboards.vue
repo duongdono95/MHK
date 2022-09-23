@@ -12,15 +12,15 @@
       </ul>
     </div>
     <div class="products_list">
-      <Product  v-for = "product of productsArray" :productData = product :key = "product._id" />
+      <Product  v-for = "product of productsShowingArray" :productData = product :key = "product._id" />
     </div>
   </div>
   <Footer />
 </template>
 
 <script>
-  import Product from '../components/Product.vue';
-  import Footer from '../components/Footer.vue';
+  import Product from "../components/Product.vue";
+  import Footer from "../components/Footer.vue";
   export default {
     components: {
       Footer,
@@ -28,22 +28,23 @@
     },
     data() {
       return {
-        productsArray: [],
+        fetchedDatalArray: [],
+        productsShowingArray: [],
         brandsArray: [],
         isShow: false,
       }
     },
     methods: {
       async getAllListings() {
-        const response = await fetch('http://localhost:3000/keyboard');
+        const response = await fetch("http://localhost:3000/keyboard");
         const data = await response.json();
-        this.productsArray = data;
-        console.log(this.productsArray);
+        this.fetchedDatalArray = data
+        console.log(this.fetchedDatalArray)
+        this.productsShowingArray = data;
         this.getBrandsArray();
       },
       getBrandsArray(){
-        const originalArray = this.productsArray;
-        const newArray = originalArray.map(item => {
+        const newArray = this.productsShowingArray.map(item => {
           return item.brand
         })
         const reducedDuplicatesArray = [...new Set(newArray)]
@@ -54,12 +55,9 @@
         this.isShow = !this.isShow
       },
       filterFunction(brand) {
-        // const newListingsArray = this.productsArray.filter(item => item.brand === brand);
-        // console.log (newListingsArray)
-        // this.productsArray = newListingsArray;
-        const originalArray = this.productsArray;
-        const filteredArray = originalArray.filter (item => item.brand === brand)
-        return this.productsArray = filteredArray;
+        const filteredArray = this.fetchedDatalArray.filter(item => item.brand === brand)
+        return this.productsShowingArray = filteredArray;
+        
       },
       
      },
@@ -79,12 +77,12 @@
   background-size: cover;
 }
 .intro {
-  color: #333;
+  color: rgb(255, 255, 255);
   font-size: 36px;
   font-weight : 700;
   text-align: center;
   padding: 30px 0 30px 0;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
   margin: 0;
 }
 

@@ -62,7 +62,7 @@
 </template>
 
 <script>
-    import Footer from '../components/Footer.vue'
+    import Footer from "../components/Footer.vue"
     export default {
         components : {Footer},
         data() {
@@ -81,9 +81,9 @@
         },
         methods: {
             async submitForm() {
-                const response = await fetch('http://localhost:3000/listings', {
-                    method: 'POST',
-                    headers: {'content-Type': 'application/json'},
+                const response = await fetch("http://localhost:3000/listings", {
+                    method: "POST",
+                    headers: {"content-Type": "application/json"},
                     body: JSON.stringify({
                         sellerName: this.sellerName,
                         productName: this.productName,
@@ -181,6 +181,7 @@
 }
 .form__group label{
     min-width : 22%;
+    color: rgba(255, 255, 255, 0.7);
 }
 .form__group input {
     flex: 1;

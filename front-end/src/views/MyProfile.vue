@@ -29,7 +29,7 @@
           </div>
           <div class="detail__group">
             <p class="label">Bio: </p>
-            <p class="info bio">My name is Nick and I'm an avid gamer. I like showing newbies around the world of gaming and the equipment that would be good for them to start with. Check out my listings below!</p>
+            <p class="info bio">My name is Nick and I"m an avid gamer. I like showing newbies around the world of gaming and the equipment that would be good for them to start with. Check out my listings below!</p>
           </div>
           <div class="detail__group">
             <p class="label">Mobile number: </p>
@@ -44,14 +44,14 @@
     </div>
       <p class="listing__title">Your Listings</p>
       <div class="listing__container">
-        <YourListings @deleteProduct='deleteProduct' v-for="product of productsArray" :productData = product :key = "product._id"/>
+        <YourListings @deleteProduct="deleteProduct" v-for="product of productsArray" :productData = product :key = "product._id"/>
     </div>
     <Footer />
   </template>
   
   <script>
-    import YourListings from '../components/YourListings.vue'
-    import Footer from '../components/Footer.vue';
+    import YourListings from "../components/YourListings.vue"
+    import Footer from "../components/Footer.vue";
     export default {
         components : { Footer, YourListings },
         data () {
@@ -64,7 +64,7 @@
         },
         methods: {
           async getAllListings() {
-          const response = await fetch('http://localhost:3000/MyProfile');
+          const response = await fetch("http://localhost:3000/MyProfile");
           const data = await response.json();
           this.productsArray = data;
           console.log(this.productsArray);
@@ -81,7 +81,7 @@
           },
           async submitDeleteRequest (id) {
             const response = await fetch (`http://localhost:3000/MyProfile/${this.id}`,{
-              method:'DELETE'
+              method:"DELETE"
             });
             const data = await response.text();
             this.isShow = false;
@@ -132,6 +132,7 @@
   gap: 100px;
 }
 .background__container {
+  margin-top: 30px;
   display: flex;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.4);
@@ -180,6 +181,7 @@
     font-size: 20px;
     margin: 0;
     padding-top: 10px;
+    color: rgba(255, 255, 255, 0.7);
   }
   .info {
     font-size: 32px;

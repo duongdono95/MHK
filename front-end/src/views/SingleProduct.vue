@@ -1,5 +1,17 @@
 <template>
-    <div class="details__container">
+    <div class="background__container">
+      <!-- <div class="contact_seller__container">
+        <p class="seller__name">{{productData.sellerName}}</p>
+        <div class="detail__group">
+          <p class="label">Email:</p>
+          <p class="info">{{productData.sellerName}}@gmail.com</p>
+        </div>
+        <div class="detail__group">
+          <p class="label">Phone:</p>
+          <p class="info">022 507 5847</p>
+        </div>
+      </div> -->
+      <div class="details__container">
        <div class="image__container">
            <img class="img" :src="productData.photoUrl" alt="Photo">
        </div>
@@ -28,9 +40,10 @@
             <p class="label">Description: </p>
             <p class="info location">{{productData.description}}</p>
           </div>
-          <button class="product__button" type="button">Contact Seller</button>
+          <button  class="product__button" type="button">Contact Seller</button>
         </div>
-      </div>
+    </div>
+    </div>
       <p class="listing__title">Related Products</p>
       <div class="listing__container">
         <RelatedProducts v-for="product of relatedListingArray " :productData = product :key = "product._id"/>
@@ -49,9 +62,9 @@
   </template>
   
   <script>
-    import RelatedProducts from '../components/RelatedProducts.vue'
-    import YourListings from '../components/YourListings.vue'
-    import Footer from '../components/Footer.vue';
+    import RelatedProducts from "../components/RelatedProducts.vue"
+    import YourListings from "../components/YourListings.vue"
+    import Footer from "../components/Footer.vue";
     export default {
       components : {
         Footer,
@@ -101,6 +114,14 @@
   </script>
   
   <style scoped>
+    .background__container {
+      margin-top: 30px;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4)
+    }
+    .contact_seller__container {
+      color: white;
+    }
   .details__container {
     width: 100%;
     max-width : 1400px;
@@ -156,6 +177,7 @@
     font-size: 20px;
     margin: 0;
     padding-top: 10px;
+    color: rgba(255, 255, 255, 0.7);
   }
   .info {
     font-size: 32px;

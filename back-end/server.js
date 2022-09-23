@@ -1,11 +1,11 @@
-const detenv = require('dotenv').config();
+const detenv = require("dotenv").config();
 const express = require("express");
 const cors = require ("cors");
 const fs = require("fs");
 const app = express();
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 // import the model from ./models/product.js
-const Product = require ('./models/product')
+const Product = require ("./models/product")
 
 app.use(cors());
 app.use(express.json());
@@ -18,8 +18,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch((err) => console.log(err));
 
 // checking the connection works or not
-mongoose.connection.on('connected', () => {
-    console.log('successfully connected')
+mongoose.connection.on("connected", () => {
+    console.log("successfully connected")
 })
 // get method for all Listing
 app.get("/all-listings", (req, res) => {
@@ -99,7 +99,7 @@ app.get("/single-product", (req, res) => {
 })
 
 // Post
-app.post('/listings', (req, res) => {
+app.post("/listings", (req, res) => {
     const listingProduct = new Product(req.body)
     console.log(listingProduct)
     listingProduct.save()
@@ -112,7 +112,7 @@ app.post('/listings', (req, res) => {
 } )
 
 //Put for Edit page
-app.put('/edit/:id', (req, res, next) => {
+app.put("/edit/:id", (req, res, next) => {
     console.log(req.params.id);
     Product.findOneAndUpdate({_id: req.params.id}, {
         $set: {
@@ -142,7 +142,7 @@ app.delete("/MyProfile/:id", (req, res) => {
 
     Product.findByIdAndDelete(id)
     .then(result => {
-     res.json({redirect: '/MyProfile'})   
+     res.json({redirect: "/MyProfile"})   
     })
     .catch(err => {
         console.log(err);
